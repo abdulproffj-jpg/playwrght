@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    environment {
+        PYTHONPATH = "${WORKSPACE}"
+    }
+
+    stages {
+        stage('Setup') {
+            steps {
+                // Install dependencies inside venv
+                sh '''
+                python -m venv venv
+                source venv/bin/activate
+                pip install -r requirements.txt
+                '''
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh '''
+                source venv/bin/activate
+                pytest -v --maxfail=1 --disable-warnings
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            junit 'tests/test-results/*.xml'
+        }
+    }
+}
