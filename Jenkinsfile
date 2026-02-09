@@ -8,9 +8,14 @@ pipeline {
             }
         }
 
+        stage('Install Browsers') {
+            steps {
+                sh 'playwright install'
+            }
+        }
+
         stage('Run Pytest') {
             steps {
-                // Run Python tests with JUnit XML output
                 sh 'pytest tests --maxfail=1 --disable-warnings -q --junitxml=test-results/results.xml'
             }
         }
