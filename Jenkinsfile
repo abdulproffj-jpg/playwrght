@@ -10,7 +10,8 @@ pipeline {
 
         stage('Run Pytest') {
             steps {
-                sh 'pytest --maxfail=1 --disable-warnings -q --junitxml=test-results/results.xml'
+                // Run Python tests with JUnit XML output
+                sh 'pytest tests --maxfail=1 --disable-warnings -q --junitxml=test-results/results.xml'
             }
         }
 
