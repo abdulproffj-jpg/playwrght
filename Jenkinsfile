@@ -8,9 +8,10 @@ pipeline {
             }
         }
 
-        stage('Install Browsers') {
+        stage('Install Chromium') {
             steps {
-                sh 'playwright install'
+                // Install only Chromium, much faster
+                sh 'playwright install chromium'
             }
         }
 
