@@ -8,25 +8,17 @@ pipeline {
             }
         }
 
-        stage('Run Playwright Tests') {
+        stage('Run Pytest') {
             steps {
-                // Use npx to ensure correct binary is called
-                sh 'npx playwright test'
+                sh 'pytest --maxfail=1 --disable-warnings -q --junitxml=test-results/results.xml'
             }
         }
 
         stage('Archive Reports') {
             steps {
-                // Archive Playwright HTML report
-                archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
+                archiveArtifacts artifacts: 'test-results/*.xml', fingerprint: true
+                junit 'test-results/*.xml'
             }
-        }
-    }
-
-    post {
-        always {
-            // Publish JUnit XML results if Playwright is configured to generate them
-            junit 'test-results/*.xml'
         }
     }
 }
