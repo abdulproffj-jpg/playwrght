@@ -10,14 +10,13 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                // Run Playwright directly if installed globally
+                // Run Playwright globally
                 sh 'playwright test'
             }
         }
 
         stage('Archive Reports') {
             steps {
-                // Archive Playwright HTML report if generated
                 archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
             }
         }
@@ -25,7 +24,7 @@ pipeline {
 
     post {
         always {
-            // If Playwright exports JUnit XML results, publish them
+            // Publish JUnit XML if Playwright exports it
             junit 'test-results/*.xml'
         }
     }
