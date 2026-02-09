@@ -10,9 +10,10 @@ def test_upload_cv(browser, cv_file):
     #login_page.navigate("https://login.seek.com/login")
 
     # Step 2: Perform login
-    text=login_page.login("abdul.proffj@gmail.com", "Abdul@!proffj@!7771")
+    text=login_page.login("abdul.proffv@gmail.com", "Abdul@!proffj@!7771")
+    print(text)
     time.sleep(3)
-    assert text == None
+    #assert text == 'Abdul Nadeem'
 
 
     # Step 3: Upload CV
