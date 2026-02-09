@@ -1,0 +1,27 @@
+{
+  "name": "update_cv_jobsdb",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000p\u0000l\u0000a\u0000y\u0000w\u0000r\u0000g\u0000h\u0000t\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdulproffj-jpg/playwrght.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/abdulproffj-jpg/playwrght/issues"
+  },
+  "homepage": "https://github.com/abdulproffj-jpg/playwrght#readme",
+  "dependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}
