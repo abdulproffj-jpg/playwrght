@@ -10,14 +10,23 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                sh 'playwright test'
+                // Use npx to ensure correct binary is called
+                sh 'npx playwright test'
             }
         }
 
         stage('Archive Reports') {
             steps {
+                // Archive Playwright HTML report
                 archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
             }
+        }
+    }
+
+    post {
+        always {
+            // Publish JUnit XML results if Playwright is configured to generate them
+            junit 'test-results/*.xml'
         }
     }
 }
